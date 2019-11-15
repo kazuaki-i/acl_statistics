@@ -1,21 +1,24 @@
+# 「単語\tスコア」のデータをWordCloudで可視化する
+
 import sys
 import argparse
 from wordcloud import WordCloud
 import re
 
-num = re.compile(r'[0-9]+st')
-
 parser = argparse.ArgumentParser()
 parser.add_argument('-i', '--input', dest='input', nargs='?', type=argparse.FileType('r'), default=sys.stdin,
                     help='input file')
 parser.add_argument('-o', '--output', dest='output', default='wordcloud.png',
-                    help='')
+                    help='output file')
 args = parser.parse_args()
 
+# ストップワード一覧
 stopwords = {'after', 'and', 'at', 'as', 'by', 'for', 'from', 'in', 'of', 'on', 'over', 'per', 'since', 'through',
              'till', 'to', 'under', 'beside', 'with', 'down', 'off', 'around', 'among', 'between', 'above', 'across',
              'along', 'near', 'up', 'into', 'onto', 'until', 'upon', 'within', 'without', 'about', 'above', 'across',
              'annual', 'around', 'the', 'it', 'via', 'you'}
+
+num = re.compile(r'[0-9]+st')
 
 
 def main():
